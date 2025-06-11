@@ -27,5 +27,3 @@ for d in ${dimensao[@]}; do
    done
    echo ""
 done
-
-
