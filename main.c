@@ -169,15 +169,7 @@ int main(int argc, char* argv[]){
         printf("%f\n", vetX[i]);
     }
     
-    FILE * descritorArquivo; //descritor do arquivo de saida
-    size_t ret; //retorno da funcao de escrita no arquivo de saida
-    
-     //abre o arquivo para escrita binaria
-     descritorArquivo = fopen("newVetX.bin", "wb");
-     if(!descritorArquivo) {
-        fprintf(stderr, "Erro de abertura do arquivo\n");
-        return 3;
-     }
+
 
   
     free(matA);

@@ -1,25 +1,31 @@
 #!/bin/bash
 gcc -o gerarDados gerarDados.c -O5
-gcc -o gaussjacobi ma.c -lm -lpthread
-gcc -o matvet matvet.c
+gcc -o gaussjacobi gauss-jacobi.c -lm -lpthread
+gcc -o corretude corretude.c
+touch newVetX.bin # Criando o arquivo binário que irá armazenar a saída do programa gauss-jacobi
 clear
 
-echo "Gerando a matriz A"
-./gerarDados 5 5 matA.bin
-echo ""
+# Arquivos de entrada
+arquivoMatA="matA.bin"  
+arquivoVetB="vetB.bin"   
+arquivoVetX="vetX.bin"
+arquivoNewVetX="newVetX.bin"
 
-echo "Gerando o vetor B"
-./gerarDados 5 1 vetB.bin
-echo ""
 
-echo "Gerando o vetor X0 (Chute inicial)"
-./gerarDados 5 1 vetX.bin
-echo ""
-echo "Executando gauss jacobi
-"
-echo ""
-./gaussjacobi 5
-echo ""
-echo "Executando matvet"
-echo ""
-./matvet matA.bin newVetX.bin 5
+threads=(1 2 3 5 10 20)
+dimensao=(20 100 1000 10000 20000)
+#dimensao=(20 100 1000 10000 20000 40000 45000)
+
+echo "N, T, Dc, Dp, Dg, Dt, E:"
+for d in ${dimensao[@]}; do
+    for t in ${threads[@]}; do
+        ./gerarDados $d $d $arquivoMatA
+        ./gerarDados $d 1 $arquivoVetB
+        ./gerarDados $d 1 $arquivoVetX
+        ./gaussjacobi $arquivoMatA $arquivoVetB $arquivoVetX $t
+        ./corretude $arquivoMatA $arquivoNewVetX $arquivoVetB $t
+   done
+   echo ""
+done
+
+
