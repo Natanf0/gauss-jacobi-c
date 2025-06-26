@@ -1,7 +1,0 @@
-N = dimensão
-T = quantidade de threads
-Dc = tempo de duração de leitura dos dados
-Dp = tempo de duração de processamento
-Dg = tempo de duração de gravação do resultado no arquivo newVetX.bin e desalocação das estruturas
-Dt = tempo de duração total do programa gauss-jacobi
-E = Erro total
