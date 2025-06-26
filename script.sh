@@ -13,7 +13,7 @@ arquivoNewVetX="newVetX.bin"
 
 
 threads=(1 2 3 5 10 20)
-dimensao=(20 100 1000 10000 20000)
+dimensao=(20 100 1000 10000 20000 40000)
 #dimensao=(20 100 1000 10000 20000 40000 45000)
 
 echo "N, T, Dc, Dp, Dg, Dt, E:"
