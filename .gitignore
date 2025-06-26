@@ -1,4 +1,4 @@
-.exe
-.bin
-.txt
+*.exe
+*.bin
+*.txt
 /.vscode
